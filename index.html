@@ -1,0 +1,42 @@
+<html>
+<h1> <font face="Verdana">Proyecto Reloj</font> </h1>
+<body>
+
+<canvas id="canvas" width="600" height="600"
+style="background-color:orange;">
+</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+drawClock();
+
+function drawClock() {
+  drawFace(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.1, 0,0,radius*1);
+  grad.addColorStop(0, 'green');
+  grad.addColorStop(0.5, 'black');
+  grad.addColorStop(1, 'green');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.05, 0, 2*Math.PI);
+  ctx.fillStyle = 'black';
+  ctx.fill();
+}
+</script>
+
+</body>
+</html>
